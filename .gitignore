@@ -9,3 +9,6 @@ dist/
 .vscode/
 *.keystore
 *.jks
+
+dist/
+__pycache__/
