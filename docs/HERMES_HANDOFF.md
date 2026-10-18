@@ -16,3 +16,6 @@ No Cursor dependency. No credentials in repositories. No ADB debloating, package
 
 ## Acceptance
 Evidence-backed website preview and Android emulator/physical-TV results, secure pairing proof, passing checks, clear blockers and rollback. Report installed, loaded, live and authorized states separately.
+
+## Two-repository GitHub Pages requirement (owner clarification)
+Both repositories require independently configured GitHub Pages sites, subject to GitHub plan and organization eligibility. TV private repo: technical docs, architectural explainers and mock TV demos, with a strict audit of what becomes publicly accessible; do not expose private code, secrets or internal receipts. Public WEB repo: product landing page, installation portal and HTML video explainers. Check Pages settings and visibility separately for both, validate workflows, deployment URLs, assets, paths, browser behavior and accessibility. If private-repo Pages is unavailable, report BLOCKED with supported alternatives; do not change repo visibility or publish private material to bypass the gate. Existing web workflow committed does not prove a successful deployment. Prepare feature-branch changes and VERITY evidence; no unapproved deploy or merge.
