@@ -1,4 +1,4 @@
-name: Publish static website
+name: Publish curated static website
 on:
   workflow_dispatch:
   push:
@@ -18,9 +18,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Upload site
+      - name: Assemble allowlisted public artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          cp index.html styles.css dist/
+          test -f dist/index.html
+          test -f dist/styles.css
+          actual="$(find dist -type f | sed 's|^dist/||' | LC_ALL=C sort)"
+          expected="$(printf 'index.html\nstyles.css' | LC_ALL=C sort)"
+          if [ "$actual" != "$expected" ]; then
+            echo "Unexpected public artifact files:"
+            printf '%s\n' "$actual"
+            exit 1
+          fi
+          if grep -R -E -i 'HERMES_HANDOFF|VERITY_PHASE4_REVIEW|RFP_CBA|RELEASE_GATE' dist; then
+            echo "Internal reference detected in public artifact"
+            exit 1
+          fi
+      - name: Upload approved website only
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
