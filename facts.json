@@ -1,0 +1,59 @@
+{
+  "surface": "hermes-tv-web",
+  "generatedFrom": {
+    "repo": "AGENTROPOLIS-CITY-OF-AGENTS/AGENTROPOLIS-HERMES-TV-WEB-",
+    "commit": "06aa7c3da6c3c73f5a6bd914e015369e0061c583",
+    "generator": "build-facts.mjs (Agent Layer pilot)"
+  },
+  "asOf": "2026-10-20",
+  "status": "in-development",
+  "definition": {
+    "what": "HERMES TV is a local-first smart TV agent interface for Android TV and Google TV. It connects a television to a Hermes agent runtime that the user owns and controls.",
+    "who": "People who run their own Hermes agent host and want a television control surface for it.",
+    "does": "It is being built to provide remote navigation, conversation, and optional voice control from the TV. Agents execute on the user-controlled host, not inside this website."
+  },
+  "facts": [
+    {
+      "key": "license",
+      "value": "Apache-2.0",
+      "asOf": "2026-10-20",
+      "source": "LICENSE",
+      "receipt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "key": "apkPublished",
+      "value": false,
+      "asOf": "2026-10-20",
+      "source": "index.html #install (\"No tested APK is currently published\")",
+      "receipt": "c4e77ba46e24caf7f6156d6b37d0dafea682e5a70475e263493db18cdda1d116"
+    },
+    {
+      "key": "siteUrl",
+      "value": "https://agentropolis-city-of-agents.github.io/AGENTROPOLIS-HERMES-TV-WEB-/",
+      "asOf": "2026-10-20",
+      "source": "GitHub Pages deployment of the source repo",
+      "receipt": null
+    },
+    {
+      "key": "tvClientRepo",
+      "value": "https://github.com/AGENTROPOLIS-CITY-OF-AGENTS/AGENTROPOLIS-HERMES-TV",
+      "asOf": "2026-10-20",
+      "source": "index.html hero link",
+      "receipt": null
+    },
+    {
+      "key": "roadmap",
+      "value": "Architecture verification, Android TV MVP, secure pairing, voice, compatibility tests, signed beta",
+      "asOf": "2026-10-20",
+      "source": "index.html #roadmap",
+      "receipt": "c4e77ba46e24caf7f6156d6b37d0dafea682e5a70475e263493db18cdda1d116"
+    },
+    {
+      "key": "agentsExecuteInWebsite",
+      "value": false,
+      "asOf": "2026-10-20",
+      "source": "index.html #architecture (\"Agents execute on an approved user-controlled host, not inside the website\")",
+      "receipt": "c4e77ba46e24caf7f6156d6b37d0dafea682e5a70475e263493db18cdda1d116"
+    }
+  ]
+}
