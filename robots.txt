@@ -1,0 +1,37 @@
+# robots.txt for HERMES TV WEB (AGENTROPOLIS Agent Layer pilot, 2026-10-20)
+# Policy classes (see agent-layer.json for the exposure matrix):
+#   INDEX  - crawlers that build searchable/citable indexes: ALLOW
+#   FETCH  - agents fetching at a user's request: ALLOW
+#   TRAIN  - crawlers collecting model-training data: DISALLOW
+# Training use is a separate rights decision; it is never bundled with indexing.
+
+# INDEX: Meta AI search indexer
+User-agent: meta-webindexer
+Allow: /
+
+# FETCH: user-requested agent fetchers
+User-agent: meta-externalfetcher
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# TRAIN: training-data collectors (maintained list, see agent-layer.json)
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Everyone else: public site, indexable
+User-agent: *
+Allow: /

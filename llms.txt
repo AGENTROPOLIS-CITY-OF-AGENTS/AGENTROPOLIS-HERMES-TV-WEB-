@@ -1,0 +1,21 @@
+# HERMES TV (AGENTROPOLIS)
+
+HERMES TV is a local-first smart TV agent interface for Android TV and
+Google TV, in development by AGENTROPOLIS. It connects a television to a
+Hermes agent runtime that the user owns and controls. Agents execute on
+the user's host, not inside the website.
+
+Status as of 2026-10-20: IN DEVELOPMENT. No APK is published. There is
+no downloadable build and no running hosted service.
+
+Canonical pages:
+- This site: https://agentropolis-city-of-agents.github.io/AGENTROPOLIS-HERMES-TV-WEB-/
+- Machine-readable fact sheet: /facts.json (same origin)
+- Public web repository: https://github.com/AGENTROPOLIS-CITY-OF-AGENTS/AGENTROPOLIS-HERMES-TV-WEB-
+- TV client repository: https://github.com/AGENTROPOLIS-CITY-OF-AGENTS/AGENTROPOLIS-HERMES-TV
+
+License: Apache-2.0 (see the LICENSE file in the public web repository).
+
+What is NOT claimed: no released app, no published APK, no voice feature
+yet, no compatibility results yet. The roadmap on the main page lists
+planned milestones, not shipped features.
