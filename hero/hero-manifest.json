@@ -1,0 +1,30 @@
+{
+  "artifact": "AGENTROPOLIS HERMES-TV 3D/360 hero",
+  "externalBinaries": {
+    "hero-360.mp4": "c103da89c80d3a73e8c342e63ebc3bd159d863bc742b202351d23d1c42174b49",
+    "hero-loop.mp4": "a1ccae748449aca863bf464bcd09ca8839c869fc0048f6967b29289413300194",
+    "poster.jpg": "6f7d13ec82d4f136f1ea23d82226d72a8b3308561beaaf23a133fe41bf7b4bbd"
+  },
+  "files": {
+    "360.html": "35751f0e9971460e6bb3b294970059b3ffcf5ad0692877e53e13fe67c4a9db5d",
+    "MATCH-RECEIPT.md": "cb32415a4c2f8b10d2f63befa88c6e1d91900c7c3a4b33f48348a901f12c8f56",
+    "engine.js": "5b82947bc2de4b36ccb88b41ac69a1ee23a33537eaad5a6372cda256e81c4c8a",
+    "hero.css": "287a4633893cec0856764b204a84014f85b2d0635936e000e6d90808aeae7d2b",
+    "hero.js": "d020b75cd3832c021c930ccbbfef6b1542c321702b59a7216c991e39282d5a9a",
+    "index.html": "9bd8c9118b3121066b667d0275ff15a710935560a6818709f78dd052c14770c8",
+    "reference/spec.md": "b0abd95f22c976e795a59b764f9684a2736886c4f33fa53f2ed6764bc2d7f1df",
+    "render/capture_frames.mjs": "235f36a0f916c13fd539e879a330bb5fc06f3bc187af4ecbb1508a828985125f",
+    "render/encode.sh": "9fad81bdc90a9dc8b1d0f35fa4cef42baa54d0b1e66d767d49386c117272a478",
+    "render/gen_manifest.py": "df2565d077d4b00d56647872a1c0c2bcaac9b6e37a66f504d0dbd360c13fc7cd",
+    "render/inject_spherical.py": "37f2f13b476c8b9151afa5a5bf5dcd684d18955ea3f5796a149ad759806007df",
+    "render/verify_interactive.mjs": "87a4ea367c59c68d6a7ad02da861cdb9e3db310430de26298fcbad842361c8e3",
+    "scene.json": "aefd72f4753dbd5fa761397440f018c2599296ba9c3855c86ab047d133a4e522",
+    "ship/RECEIPT.md": "f425efcaae89542537c90079d201f1bac05e31038b8682bd9e60430ef76ae595",
+    "story/story.md": "213de7267a05bc6ce9ec49133be5c9cfedf00d3ff31bd19ab8f4beb00ebe48d1",
+    "tests/check_artifact.py": "f5729894908ff531e0ca43860b587376fefb7001406a74afab69a94f73218743",
+    "timing.json": "13ae3fede0f23e4f9df1ef636d4fe1605a907e69ad9a85912fc81c422aeb5014",
+    "viewer.js": "dba7f7a5d6269eb138cdfb012051538548bfbb1d78ae7fb848a77e54dbbfed50"
+  },
+  "note": "files: exact publication set for the expanded allowlist proposal. externalBinaries: delivered alongside the PR (connector snapshot path accepts UTF-8 only) and pinned by SHA-256; the release vehicle must place them next to index.html.",
+  "version": "1.0.0"
+}

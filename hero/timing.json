@@ -1,0 +1,67 @@
+{
+  "camera": {
+    "interactive": {
+      "dist0": 13.5,
+      "distMax": 26,
+      "distMin": 6,
+      "pitch0": 0.32,
+      "pitchMax": 1.05,
+      "pitchMin": -0.15,
+      "target": [
+        0,
+        1.2,
+        0
+      ],
+      "yaw0": 0.55
+    },
+    "poster": {
+      "dist": 13.5,
+      "pitch": 0.32,
+      "target": [
+        0,
+        1.2,
+        0
+      ],
+      "yaw": 0.55
+    },
+    "video": {
+      "dist0": 13.5,
+      "distAmp": 0.4,
+      "pitch0": 0.32,
+      "pitchAmp": 0.03,
+      "pitchCycles": 2,
+      "target": [
+        0,
+        1.2,
+        0
+      ],
+      "yaw0": 0.55,
+      "yawAmp": 0.24
+    }
+  },
+  "fps": 24,
+  "hero360": {
+    "camera": [
+      0,
+      3.6,
+      0
+    ],
+    "fps": 24,
+    "height": 1024,
+    "projection": "equirectangular",
+    "seconds": 20,
+    "stereo": "mono",
+    "width": 2048
+  },
+  "heroLoop": {
+    "codec": "libx264",
+    "fps": 24,
+    "height": 720,
+    "pixFmt": "yuv420p",
+    "seconds": 20,
+    "width": 1280
+  },
+  "loopSeconds": 20,
+  "note": "Every animated value is a periodic function of time t with a period that divides 20 seconds, so t=20 reproduces t=0 exactly and the loop is seamless. Interactive preview uses accumulated time, not wall-clock time, so pausing freezes the scene and capture reproduces the same sequence.",
+  "version": "1.0.0"
+}

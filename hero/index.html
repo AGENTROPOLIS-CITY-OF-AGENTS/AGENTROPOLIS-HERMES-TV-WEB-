@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="AGENTROPOLIS HERMES TV: a local-first, device-agnostic agent interface concept. Interactive 3D hero, not a live device session.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>HERMES TV | AGENTROPOLIS</title>
+<link rel="stylesheet" href="hero.css">
+</head>
+<body>
+<header>
+<a class="brand" href="./">AGENTROPOLIS <span>HERMES TV</span></a>
+<nav aria-label="Main navigation">
+<a href="#hero">Explore</a>
+<a href="#devices">Devices</a>
+<a href="#video">Video</a>
+<a href="#view360">360&deg;</a>
+<a href="#concept">Concept</a>
+</nav>
+</header>
+<main>
+<section class="hero" id="hero">
+<p class="eyebrow">LOCAL FIRST / HUMAN CONTROLLED / OPEN DEVELOPMENT</p>
+<h1>YOUR DEVICES.<br><em>YOUR AGENTS.</em><br>YOUR RULES.</h1>
+<p class="lead">A secure, device-agnostic interface concept for connecting the screens and speakers in your home to an agent runtime you control. Hermes is an initial integration, not the only possible runtime. No vendor, agent runtime, or TV operating system is hard-coded into this scene.</p>
+<p class="status">INTERACTIVE DESIGN CONCEPT &middot; NOT A LIVE DEVICE SESSION</p>
+<div class="controls" role="group" aria-label="Hero controls">
+<button id="explore" type="button">Explore 360&deg;</button>
+<button id="exitExplore" type="button" class="hidden">Exit explore mode</button>
+<button id="pause" type="button" aria-pressed="false">Pause motion</button>
+<button id="reset" type="button">Reset view</button>
+<button id="sendTask" type="button">Send illustrative task</button>
+</div>
+<p id="diag" class="diag hidden" role="alert"></p>
+<div id="stage" class="stage">
+<img id="poster" src="poster.jpg" alt="HERMES-TV hero poster: a central retro-futuristic console on a circular platform, connected by light paths to a television, desktop, tablet, phone, and smart home hub, against a futuristic skyline." width="1280" height="720">
+<canvas id="heroCanvas" width="1280" height="720" tabindex="0" role="img" aria-label="Interactive 3D scene: central HERMES-TV console on a circular platform, connected by animated light paths to surrounding devices. Drag to orbit, arrow keys to turn, plus and minus to zoom, R to reset, P to pause, Escape to exit explore mode. The same device descriptions appear in text below."></canvas>
+<div id="hotspots" class="hotspots" aria-label="Device hotspots"></div>
+</div>
+<p id="chip" class="chip" aria-live="polite">Poster shown. Use Explore 360&deg; to enter the interactive scene.</p>
+<aside id="hotspotPanel" class="panel hidden" tabindex="-1" aria-label="Device description">
+<h3></h3>
+<p></p>
+<p class="note">Conceptual only. This panel sends no device command, requests no credential, and scans no network.</p>
+</aside>
+</section>
+<section id="devices">
+<h2>Devices in this concept</h2>
+<div class="grid">
+<article><h3>Television (concept)</h3><p>A connected display in this concept. Displayed as a device role only; no platform is shown as tested, connected, or supported.</p></article>
+<article><h3>Desktop (concept)</h3><p>A household computer in this concept. Device roles are conceptual unless supported by verified implementation evidence.</p></article>
+<article><h3>Tablet (concept)</h3><p>A portable display in this concept. Nothing here pairs, scans, or controls a real device.</p></article>
+<article><h3>Phone (concept)</h3><p>A personal device in this concept. No credentials are requested and no session is opened.</p></article>
+<article><h3>Smart home hub (concept)</h3><p>A home hub in this concept. Its glow marks the role, not a live connection.</p></article>
+<article><h3>Secure bridge (concept)</h3><p>The bridge is the pairing and permission boundary in the HERMES-TV architecture: authenticated pairing, no credentials embedded in the television. Shown here as architecture, not as a live session.</p></article>
+<article><h3>Utility Grid (concept)</h3><p>The Utility Grid is the shared metering and governance layer in AGENTROPOLIS. This hero shows it as a concept only; no usage, metering, or billing is represented.</p></article>
+<article><h3>Runtime independence</h3><p>HERMES-TV is device-, protocol-, and runtime-agnostic by design. Hermes is an initial integration, not the only possible runtime. No single vendor, agent runtime, or TV operating system is hard-coded into this scene.</p></article>
+</div>
+</section>
+<section id="video">
+<h2>Hero loop</h2>
+<p class="lead">A twenty-second seamless loop rendered from the same scene, with no audio. If the video cannot play, the poster is shown instead.</p>
+<video id="heroVideo" src="hero-loop.mp4" poster="poster.jpg" muted playsinline loop preload="metadata" controls></video>
+<p id="videoFallback" class="hidden">Video unavailable here. The poster above carries the same opening composition.</p>
+</section>
+<section id="view360">
+<h2>360&deg; view</h2>
+<p class="lead">The spherical video is viewed in its own viewer page, where you can drag to look around. The large spherical master is not loaded by this page.</p>
+<p><a class="cta" href="360.html">Open the 360&deg; viewer &rarr;</a></p>
+</section>
+<section id="concept">
+<h2>What this hero is, and is not</h2>
+<p class="lead">This is a procedural 3D concept built from the written brief. The reference panorama named in the build directive did not arrive with it, so the composition follows the directive's description; rear views and unseen surroundings are artistic extensions, not recovered details. Nothing here is a live device session, a measured task count, or an execution receipt. The task sequence is illustrative: a dot travels from the hub to a device, the device acknowledges, and a receipt indicator appears. No command leaves this page.</p>
+</section>
+</main>
+<footer>AGENTROPOLIS &middot; Architecture limits exposure. Governance limits failure.</footer>
+<script src="engine.js"></script>
+<script src="hero.js"></script>
+</body>
+</html>
