@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>HERMES TV 360&deg; viewer | AGENTROPOLIS</title>
+<link rel="stylesheet" href="hero.css">
+</head>
+<body>
+<header>
+<a class="brand" href="./">AGENTROPOLIS <span>HERMES TV</span></a>
+<nav aria-label="Main navigation"><a href="index.html">Back to hero</a></nav>
+</header>
+<main>
+<section class="hero" id="view360">
+<p class="eyebrow">SPHERICAL VIDEO &middot; EQUIRECTANGULAR 2:1 &middot; MONO</p>
+<h1>LOOK AROUND.</h1>
+<p class="lead">Drag to look, arrow keys to turn, plus and minus to narrow the view. This viewer renders the equirectangular video through a real spherical projection in raw WebGL (no library). It is not a flat video element.</p>
+<p class="status">INTERACTIVE DESIGN CONCEPT &middot; NOT A LIVE DEVICE SESSION</p>
+<div class="controls" role="group" aria-label="Viewer controls">
+<button id="pause360" type="button" aria-pressed="false">Pause motion</button>
+<button id="reset360" type="button">Reset view</button>
+</div>
+<div id="stage360" class="stage">
+<video id="video360" src="hero-360.mp4" muted playsinline loop preload="metadata" crossorigin="anonymous"></video>
+<canvas id="glCanvas" width="960" height="540" tabindex="0" role="img" aria-label="360 degree view of the HERMES-TV hero scene. Drag to look around."></canvas>
+</div>
+<p id="glFallback" class="hidden">WebGL is unavailable here, so the spherical viewer cannot run. The hero poster on the main page carries the same opening composition.</p>
+<p class="chip">The video texture is sampled per-pixel by longitude and latitude. If the seam were broken, the view would tear at the wrap point; if the poles were broken, the zenith and nadir would smear or blank.</p>
+</section>
+</main>
+<footer>AGENTROPOLIS &middot; Architecture limits exposure. Governance limits failure.</footer>
+<script src="viewer.js"></script>
+</body>
+</html>
