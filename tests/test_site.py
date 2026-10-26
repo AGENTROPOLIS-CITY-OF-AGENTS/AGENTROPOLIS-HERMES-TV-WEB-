@@ -48,4 +48,15 @@ class Boundary(unittest.TestCase):
         p.write_text(p.read_text().replace('background:var(--red);color:var(--bg)', 'background:var(--red);color:white'))
         with self.assertRaises(AssertionError): site.build()
 
+    def test_dist_root_symlink_rejected(self):
+        site.build()
+        (self.root / 'dist').rename(self.root / 'other')
+        (self.root / 'dist').symlink_to(self.root / 'other', target_is_directory=True)
+        with self.assertRaises(AssertionError): site.validate(self.root / 'dist')
+
+    def test_artifact_source_drift_rejected(self):
+        site.build()
+        (self.root / 'dist/index.html').write_text('changed')
+        with self.assertRaises(AssertionError): site.validate(self.root / 'dist')
+
 if __name__ == '__main__': unittest.main()
