@@ -10,6 +10,11 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ('index.html', 'styles.css')
 
+def require(condition, message):
+    """Validation must remain active under python -O / PYTHONOPTIMIZE."""
+    if not condition:
+        raise AssertionError(message)
+
 class Page(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -18,47 +23,48 @@ class Page(HTMLParser):
         a = dict(attrs)
         self.tags.append((tag, a))
         if 'id' in a:
-            assert a['id'] not in self.ids, 'duplicate ID'
+            require(a['id'] not in self.ids, 'duplicate ID')
             self.ids.add(a['id'])
         for key in ('href', 'src'):
             if key in a:
                 self.refs.append(a[key])
-        assert not any(k.startswith('on') for k in a), 'inline event handler'
-        assert tag not in ('script', 'iframe', 'object', 'embed', 'base'), 'active content requires security review'
+        require(not any((k.startswith('on') for k in a)), 'inline event handler')
+        require(tag not in ('script', 'iframe', 'object', 'embed', 'base'), 'active content requires security review')
         if tag == 'img':
-            assert 'alt' in a, 'image requires alt'
+            require('alt' in a, 'image requires alt')
 
 def validate(dist):
+    require(not dist.is_symlink(), 'dist must not be a symlink')
     paths = list(dist.rglob('*'))
-    assert all(not p.is_symlink() for p in paths), 'symlink in artifact'
-    assert {p.relative_to(dist).as_posix() for p in paths} == set(PUBLIC), 'artifact differs from exact allowlist'
+    require(all((not p.is_symlink() for p in paths)), 'symlink in artifact')
+    require({p.relative_to(dist).as_posix() for p in paths} == set(PUBLIC), 'artifact differs from exact allowlist')
     for name in PUBLIC:
-        assert (dist / name).is_file(), 'non-file public entry'
-        assert (dist / name).read_bytes() == (ROOT / name).read_bytes(), 'artifact/source drift'
+        require((dist / name).is_file(), 'non-file public entry')
+        require((dist / name).read_bytes() == (ROOT / name).read_bytes(), 'artifact/source drift')
     html = (dist / 'index.html').read_text()
     page = Page()
     page.feed(html)
-    assert any(t == 'html' and a.get('lang') == 'en' for t, a in page.tags), 'missing language'
-    assert '<title>' in html and any(t == 'main' for t, a in page.tags), 'missing title/main'
-    assert sum(t == 'h1' for t, a in page.tags) == 1, 'one h1 required'
-    assert any(t == 'meta' and a.get('name') == 'viewport' for t, a in page.tags), 'missing viewport'
+    require(any((t == 'html' and a.get('lang') == 'en' for t, a in page.tags)), 'missing language')
+    require('<title>' in html and any((t == 'main' for t, a in page.tags)), 'missing title/main')
+    require(sum((t == 'h1' for t, a in page.tags)) == 1, 'one h1 required')
+    require(any((t == 'meta' and a.get('name') == 'viewport' for t, a in page.tags)), 'missing viewport')
     for ref in page.refs:
         u = urlsplit(ref)
         if u.scheme or u.netloc:
-            assert u.scheme == 'https' and u.hostname == 'github.com', 'unreviewed external origin'
+            require(u.scheme == 'https' and u.hostname == 'github.com', 'unreviewed external origin')
             continue
-        assert not u.query and not u.path.startswith('/'), 'project Pages requires relative URLs'
+        require(not u.query and (not u.path.startswith('/')), 'project Pages requires relative URLs')
         target = (dist / (u.path or 'index.html')).resolve()
-        assert target.is_relative_to(dist.resolve()), 'path traversal'
+        require(target.is_relative_to(dist.resolve()), 'path traversal')
         if target.is_dir():
             target /= 'index.html'
-        assert target.is_file(), f'missing local asset: {ref}'
+        require(target.is_file(), f'missing local asset: {ref}')
         if u.fragment:
-            assert u.fragment in page.ids, f'missing anchor: {ref}'
+            require(u.fragment in page.ids, f'missing anchor: {ref}')
     css = (dist / 'styles.css').read_text()
-    assert not re.search(r'url\s*\(|@import', css, re.I), 'CSS dependencies require explicit allowlist review'
-    assert '.cta{' in css and 'background:var(--red);color:var(--bg)' in css, 'CTA contrast regression'
-    assert ':focus-visible' in css and 'prefers-reduced-motion' in css, 'keyboard/motion baseline missing'
+    require(not re.search('url\\s*\\(|@import', css, re.I), 'CSS dependencies require explicit allowlist review')
+    require('.cta{' in css and 'background:var(--red);color:var(--bg)' in css, 'CTA contrast regression')
+    require(':focus-visible' in css and 'prefers-reduced-motion' in css, 'keyboard/motion baseline missing')
     return {name: hashlib.sha256((dist / name).read_bytes()).hexdigest() for name in PUBLIC}
 
 def build():
@@ -69,7 +75,7 @@ def build():
         shutil.rmtree(dist)
     dist.mkdir()
     for name in PUBLIC:
-        assert not (ROOT / name).is_symlink(), 'source symlink'
+        require(not (ROOT / name).is_symlink(), 'source symlink')
         shutil.copyfile(ROOT / name, dist / name)
     return validate(dist)
 

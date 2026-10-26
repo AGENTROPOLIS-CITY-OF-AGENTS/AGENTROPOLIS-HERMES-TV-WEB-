@@ -4,10 +4,10 @@ import http.server
 import threading
 import urllib.error
 import urllib.request
-from site_build import build
+from site_build import ROOT, build
 
 build()
-handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory='dist')
+handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(ROOT / 'dist'))
 server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), handler)
 threading.Thread(target=server.serve_forever, daemon=True).start()
 try:
@@ -17,7 +17,8 @@ try:
                 status = response.status
         except urllib.error.HTTPError as error:
             status = error.code
-        assert status == expected, (path, status, expected)
+        if status != expected:
+            raise AssertionError((path, status, expected))
         print(path, status)
 finally:
     server.shutdown()
