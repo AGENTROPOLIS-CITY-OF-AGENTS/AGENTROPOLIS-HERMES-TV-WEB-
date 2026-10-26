@@ -1,8 +1,10 @@
-# AGENTROPOLIS HERMES TV — Web
+# AgenticTV by AGENTROPOLIS — Web
 
-Public landing page and documentation portal for the proposed Hermes TV client.
+Public landing page and documentation portal for the proposed AgenticTV client.
 
 **Status:** pre-release; no verified APK or live Hermes integration. Do not claim otherwise.
+
+**Brand:** AgenticTV by AGENTROPOLIS. Hermes is the initial agent runtime and development orchestrator. See [brand contract](docs/AGENTICTV_BRAND.md).
 
 ## Architecture
 Android TV client (separate repository) → authenticated bridge → user-owned Hermes runtime. This repository hosts only public website content.
