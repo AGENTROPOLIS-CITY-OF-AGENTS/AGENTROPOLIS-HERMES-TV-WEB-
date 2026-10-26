@@ -1,4 +1,4 @@
-# HERMES-TV hero: story (story/story.md)
+# AgenticTV hero: story (story/story.md)
 
 The 20 s loop has no narrator, no audio, and no words in the scene.
 Its story is told by motion and by the HTML around it.
