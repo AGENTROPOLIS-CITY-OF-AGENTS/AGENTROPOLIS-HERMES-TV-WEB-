@@ -1,4 +1,4 @@
-# Hermes-native handoff — AGENTROPOLIS HERMES TV
+# Hermes-native handoff — AgenticTV by AGENTROPOLIS
 
 ## Mandate
 Hermes is the designated project manager, developer/orchestrator and eventual agent runtime for this project. Do not require Cursor. Coordinate work across two repositories: this public web portal and AGENTROPOLIS-HERMES-TV Android client. AGENTROPOLIS governance services are planned, not assumed live.
